@@ -26,6 +26,8 @@ import time
 from pathlib import Path
 from typing import TYPE_CHECKING, Any
 
+from random import choice
+
 from pyrogram import raw
 
 from .. import utils
@@ -120,13 +122,13 @@ CREATE TABLE update_state
 """
 
 TEST = {1: "149.154.175.10", 2: "149.154.167.40", 3: "149.154.175.117"}
-
+DC_5 = ["91.108.56.123", "91.108.56.137", "91.108.56.200", "91.108.56.150", "91.108.56.162"]
 PROD = {
     1: "149.154.175.53",
     2: "149.154.167.51",
     3: "149.154.175.100",
     4: "149.154.167.91",
-    5: "91.108.56.130",
+    5: choice(DC_5),
     203: "91.105.192.100",
 }
 
