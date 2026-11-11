@@ -445,18 +445,6 @@ class Session:
                         msg.msg_id - (await self.msg_factory.allocate_message_identity())
                     ) / 2**32
 
-                    if time_diff > 30:
-                        raise SecurityCheckMismatch(
-                            "The msg_id belongs to over 30 seconds in the future. "
-                            "Most likely the client time has to be synchronized."
-                        )
-
-                    if time_diff < -300:
-                        raise SecurityCheckMismatch(
-                            "The msg_id belongs to over 300 seconds in the past. "
-                            "Most likely the client time has to be synchronized."
-                        )
-
                     self.ignore_count = 0
             except SecurityCheckMismatch as e:
                 log.info("Discarding packet: %s", e)
